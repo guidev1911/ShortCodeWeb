@@ -17,7 +17,7 @@ async function encurtarUrl() {
     }
 
     try {
-        const response = await fetch("http://localhost:8080/shorten", {
+        const response = await fetch("https://bb3e-2804-29b8-540d-faa7-827c-ac06-f994-4a82.ngrok-free.app/shorten", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body)
@@ -56,7 +56,7 @@ async function buscarEstatisticas() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/stats/${codigo}`);
+        const response = await fetch(`https://bb3e-2804-29b8-540d-faa7-827c-ac06-f994-4a82.ngrok-free.app/stats/${codigo}`);
 
         if (!response.ok) {
             const errorText = await response.text();
