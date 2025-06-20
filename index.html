@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <title>Encurtador de URL</title>
-    <link rel="stylesheet" href="./styles/style.css" />
+  <meta charset="UTF-8" />
+  <title>Encurtador de URL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/style.css" />
 </head>
 <body>
+  <div class="wrapper">
     <main class="layout">
-        <section class="card">
-            <h1>Encurtar URL</h1>
-            <label for="originalUrl">URL original:</label>
-            <input type="text" id="originalUrl" placeholder="https://exemplo.com" />
+      <section class="card">
+        <h1>Encurtar URL</h1>
+        <label for="originalUrl">URL original:</label>
+        <input type="text" id="originalUrl" placeholder="https://exemplo.com" />
 
-            <label for="expirationDate">Data de expiração (opcional):</label>
-            <input type="datetime-local" id="expirationDate" />
+        <label for="expirationDate">Data de expiração (opcional):</label>
+        <input type="datetime-local" id="expirationDate" />
 
-            <button id="btnEncurtar">Encurtar</button>
+        <button id="btnEncurtar">Encurtar</button>
 
-            <div id="resultado" style="display:none;"></div>
-        </section>
-        
-        <section class="card">
-            <h1>Estatísticas</h1>
-            <label for="codigoStats">Código encurtado:</label>
-            <input type="text" id="codigoStats" placeholder="Ex: hmcyji" />
+        <div id="resultado" style="display:none;"></div>
+      </section>
 
-            <button id="btnStats">Buscar estatísticas</button>
+      <section class="card">
+        <h1>Estatísticas</h1>
+        <label for="codigoStats">Código encurtado:</label>
+        <input type="text" id="codigoStats" placeholder="Ex: hmcyji" />
 
-            <div id="estatisticas" style="display:none;"></div>
-        </section>
+        <button id="btnStats">Buscar estatísticas</button>
+
+        <div id="estatisticas" style="display:none;"></div>
+      </section>
     </main>
 
-    <script src="./scripts/script.js"></script>
+    <footer class="easter-egg">
+      <p>When you seek the light, it begins to see you</p>
+    </footer>
+  </div>
+
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

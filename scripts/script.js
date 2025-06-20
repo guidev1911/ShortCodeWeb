@@ -13,8 +13,7 @@ async function encurtarUrl() {
     const body = { originalUrl: url };
 
     if (expirationInput) {
-        const isoDate = new Date(expirationInput).toISOString();
-        body.expirationDate = isoDate;
+        body.expirationDate = expirationInput + ":00.000Z";
     }
 
     try {

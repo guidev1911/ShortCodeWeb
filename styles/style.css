@@ -3,13 +3,32 @@
 }
 
 body, html {
-  margin: 0; padding: 0; height: 100%;
+  margin: 0;
+  padding: 0;
   background: #212121;
   font-family: Arial, sans-serif;
   color: #fff;
+  min-height: 100vh;
+}
+
+.wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.easter-egg {
+  margin-top: 40px;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  color: #00F778;
+  font-style: italic;
+  opacity: 0.6;
+  user-select: none;
+  pointer-events: none;
+  text-align: center;
 }
 
 .layout {
@@ -21,7 +40,8 @@ body, html {
   padding: 40px 20px;
   width: 100%;
   max-width: 1200px;
-  flex-wrap: nowrap;         
+  flex-wrap: nowrap;    
+   margin: 0 auto;     
 }
 
 .card {
@@ -108,21 +128,40 @@ a:hover {
   text-decoration: underline;
 }
 
+.easter-egg {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  color: #00F778;
+  font-style: italic;
+  opacity: 0.6;
+  user-select: none;
+  pointer-events: none;
+}
 
 @media (max-width: 1000px) {
+  body, html {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+    padding: 0;
+  }
+
   .layout {
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     padding: 20px 10px;
   }
 
   .card {
-    flex: none;
-    width: 98vw;         /* quase 100% da viewport width */
-    max-width: 700px;    /* limite máximo para tablets grandes */
-    min-height: 600px;   /* altura confortável */
-    margin: 0 auto;
+    width: 90vw;
+    max-width: 500px;
+    min-height: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    font-size: 1rem;
   }
 }
 
