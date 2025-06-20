@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+  margin: 0; padding: 0; height: 100%;
+  background: #212121;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;        
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 1200px;
+  flex-wrap: nowrap;         
+}
+
+.card {
+  background-color: #1e1e1e;
+  padding: 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 247, 120, 0.3);
+
+  width: 500px;      
+  height: 440px;     
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;   
+
+  flex: none;       
+}
+
+
+.card h1 {
+  text-align: center;   
+  font-size: 1.6rem;
+  color: #00F778;
+  margin-bottom: 25px;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #2E2E2E;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+button {
+  padding: 14px;
+  background-color: #00F778;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #00cc5a;
+}
+
+#resultado,
+#estatisticas {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #2E2E2E;
+  border-left: 5px solid #00F778;
+  border-radius: 6px;
+  word-break: break-word;
+}
+
+a {
+  color: #00F778;
+  word-break: break-all;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 1000px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px 10px;
+  }
+
+  .card {
+    flex: none;
+    width: 98vw;         /* quase 100% da viewport width */
+    max-width: 700px;    /* limite máximo para tablets grandes */
+    min-height: 600px;   /* altura confortável */
+    margin: 0 auto;
+  }
+}
+
