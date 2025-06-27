@@ -38,11 +38,27 @@ async function encurtarUrl() {
             <strong>URL encurtada:</strong><br>
             <a href="${shortLink}" target="_blank" style="color:#00F778;">${shortLink}</a>
         `;
-    } catch (error) {
+        }catch (error) {
+        let mensagemErro = "Erro inesperado. Tente novamente mais tarde.";
+
+        try {
+            const erroJson = JSON.parse(error.message);
+            mensagemErro = erroJson.error || mensagemErro;
+        } catch {
+            if (error.message) {
+                mensagemErro = error.message;
+            }
+        }
+
         resultadoDiv.style.display = "block";
-        resultadoDiv.innerHTML = `<span style="color:red;">Erro: ${error.message}</span>`;
+        resultadoDiv.innerHTML = `
+            <div style="background-color:rgba(122, 47, 47, 0.25); color: #FF6666; padding: 10px; border-radius: 5px;">
+                <strong>Erro:</strong> ${mensagemErro}
+            </div>
+        `;
     }
 }
+
 
 document.getElementById("btnStats").addEventListener("click", buscarEstatisticas);
 
@@ -72,9 +88,24 @@ async function buscarEstatisticas() {
             <strong>Criado em:</strong> ${formatarData(data.createdAt)}<br>
             <strong>Expira em:</strong> ${formatarData(data.expirationDate)}
         `;
-    } catch (error) {
+        }catch (error) {
+        let mensagemErro = "Erro inesperado. Tente novamente mais tarde.";
+
+        try {
+            const erroJson = JSON.parse(error.message);
+            mensagemErro = erroJson.error || mensagemErro;
+        } catch {
+            if (error.message) {
+                mensagemErro = error.message;
+            }
+        }
+
         estatisticasDiv.style.display = "block";
-        estatisticasDiv.innerHTML = `<span style="color:red;">Erro: ${error.message}</span>`;
+        estatisticasDiv.innerHTML = `
+            <div style="background-color:rgba(122, 47, 47, 0.25); color: #FF6666; padding: 10px; border-radius: 5px;">
+                <strong>Erro:</strong> ${mensagemErro}
+            </div>
+        `;
     }
 }
 
