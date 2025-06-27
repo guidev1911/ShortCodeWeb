@@ -66,6 +66,9 @@ async function buscarEstatisticas() {
     const codigo = document.getElementById("codigoStats").value.trim();
     const estatisticasDiv = document.getElementById("estatisticas");
 
+    estatisticasDiv.innerHTML = ""; // limpa antes de exibir novo conteúdo
+    estatisticasDiv.style.display = "none"; // oculta antes de mostrar resultado
+
     if (!codigo) {
         alert("Informe o código encurtado.");
         return;
@@ -80,7 +83,7 @@ async function buscarEstatisticas() {
         }
 
         const data = await response.json();
-        estatisticasDiv.style.display = "block";
+
         estatisticasDiv.innerHTML = `
             <strong>Estatísticas:</strong><br><br>
             <strong>URL original:</strong> <a href="${data.originalUrl}" target="_blank">${data.originalUrl}</a><br>
@@ -88,7 +91,8 @@ async function buscarEstatisticas() {
             <strong>Criado em:</strong> ${formatarData(data.createdAt)}<br>
             <strong>Expira em:</strong> ${formatarData(data.expirationDate)}
         `;
-        }catch (error) {
+        estatisticasDiv.style.display = "block";
+    } catch (error) {
         let mensagemErro = "Erro inesperado. Tente novamente mais tarde.";
 
         try {
@@ -100,14 +104,15 @@ async function buscarEstatisticas() {
             }
         }
 
-        estatisticasDiv.style.display = "block";
         estatisticasDiv.innerHTML = `
             <div style="background-color:rgba(122, 47, 47, 0.25); color: #FF6666; padding: 10px; border-radius: 5px;">
                 <strong>Erro:</strong> ${mensagemErro}
             </div>
         `;
+        estatisticasDiv.style.display = "block";
     }
 }
+
 
 function formatarData(isoString) {
     const data = new Date(isoString);

@@ -108,6 +108,13 @@ button:hover {
   background-color: #00cc5a;
 }
 
+#estatisticas {
+max-height: 250px; 
+overflow-y: auto;
+margin-top: 15px;
+padding-right: 10px;
+}
+
 #resultado,
 #estatisticas {
   margin-top: 25px;
@@ -163,5 +170,12 @@ a:hover {
     padding: 20px;
     font-size: 1rem;
   }
+
+  #estatisticas {
+  max-height: 250px; 
+  overflow-y: auto;
+  margin-top: 15px;
+  padding-right: 10px;
+ }
 }
 
