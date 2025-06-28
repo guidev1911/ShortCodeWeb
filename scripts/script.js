@@ -17,7 +17,7 @@ async function encurtarUrl() {
     }
 
     try {
-        const response = await fetch("http://localhost:8080/shorten", {
+        const response = await fetch("https://scd-gowv.onrender.com/shorten", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body)
@@ -31,7 +31,7 @@ async function encurtarUrl() {
         const data = await response.json();
         console.log("Resposta da API:", data);
 
-        const shortLink = data.shortUrl || `http://${data.shortCode}`;
+        const shortLink = data.shortUrl || `https://${data.shortCode}`;
 
         resultadoDiv.style.display = "block";
         resultadoDiv.innerHTML = `
@@ -66,8 +66,8 @@ async function buscarEstatisticas() {
     const codigo = document.getElementById("codigoStats").value.trim();
     const estatisticasDiv = document.getElementById("estatisticas");
 
-    estatisticasDiv.innerHTML = ""; // limpa antes de exibir novo conteúdo
-    estatisticasDiv.style.display = "none"; // oculta antes de mostrar resultado
+    estatisticasDiv.innerHTML = ""; 
+    estatisticasDiv.style.display = "none"; 
 
     if (!codigo) {
         alert("Informe o código encurtado.");
@@ -75,7 +75,7 @@ async function buscarEstatisticas() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/stats/${codigo}`);
+        const response = await fetch(`https://scd-gowv.onrender.com/stats/${codigo}`);
 
         if (!response.ok) {
             const errorText = await response.text();
