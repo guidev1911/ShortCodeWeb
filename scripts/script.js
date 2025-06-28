@@ -59,13 +59,13 @@ async function encurtarUrl() {
     }
 }
 
-
 document.getElementById("btnStats").addEventListener("click", buscarEstatisticas);
 
 async function buscarEstatisticas() {
-    const codigo = document.getElementById("codigoStats").value.trim();
-    const estatisticasDiv = document.getElementById("estatisticas");
+    let input = document.getElementById("codigoStats").value.trim();
+    let codigo = input.substring(input.lastIndexOf("/") + 1); 
 
+    const estatisticasDiv = document.getElementById("estatisticas");
     estatisticasDiv.innerHTML = ""; 
     estatisticasDiv.style.display = "none"; 
 
@@ -112,7 +112,6 @@ async function buscarEstatisticas() {
         estatisticasDiv.style.display = "block";
     }
 }
-
 
 function formatarData(isoString) {
     const data = new Date(isoString);
