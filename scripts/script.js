@@ -5,15 +5,20 @@ async function encurtarUrl() {
     const expirationInput = document.getElementById("expirationDate").value;
     const resultadoDiv = document.getElementById("resultado");
 
-    if (!url) {
-        alert("Informe a URL original.");
-        return;
-    }
-
     const body = { originalUrl: url };
 
     if (expirationInput) {
-        body.expirationDate = expirationInput + ":00.000Z";
+        const localDate = new Date(expirationInput);
+
+        const offsetMinutes = localDate.getTimezoneOffset();
+        const offsetSign = offsetMinutes > 0 ? "-" : "+";
+        const offsetHours = String(Math.floor(Math.abs(offsetMinutes) / 60)).padStart(2, "0");
+        const offsetMins = String(Math.abs(offsetMinutes) % 60).padStart(2, "0");
+        const offset = `${offsetSign}${offsetHours}:${offsetMins}`;
+
+        const isoWithoutZ = localDate.toISOString().replace("Z", "");
+
+        body.expirationDate = isoWithoutZ + offset;
     }
 
     try {
