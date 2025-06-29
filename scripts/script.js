@@ -73,7 +73,7 @@ async function buscarEstatisticas() {
     }
 
     try {
-        const response = await fetch(`http://scd-gowv.onrender.com/stats/${codigo}`);
+        const response = await fetch(`https://scd-gowv.onrender.com/stats/${codigo}`);
 
         if (!response.ok) {
             const errorText = await response.text();
