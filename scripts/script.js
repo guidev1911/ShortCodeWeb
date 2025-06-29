@@ -9,16 +9,9 @@ async function encurtarUrl() {
 
     if (expirationInput) {
         const localDate = new Date(expirationInput);
+        const utcDateString = localDate.toISOString();
 
-        const offsetMinutes = localDate.getTimezoneOffset();
-        const offsetSign = offsetMinutes > 0 ? "-" : "+";
-        const offsetHours = String(Math.floor(Math.abs(offsetMinutes) / 60)).padStart(2, "0");
-        const offsetMins = String(Math.abs(offsetMinutes) % 60).padStart(2, "0");
-        const offset = `${offsetSign}${offsetHours}:${offsetMins}`;
-
-        const isoWithoutZ = localDate.toISOString().replace("Z", "");
-
-        body.expirationDate = isoWithoutZ + offset;
+        body.expirationDate = utcDateString;
     }
 
     try {
@@ -43,7 +36,7 @@ async function encurtarUrl() {
             <strong>URL encurtada:</strong><br>
             <a href="${shortLink}" target="_blank" style="color:#00F778;">${shortLink}</a>
         `;
-        }catch (error) {
+    } catch (error) {
         let mensagemErro = "Erro inesperado. Tente novamente mais tarde.";
 
         try {
@@ -68,11 +61,11 @@ document.getElementById("btnStats").addEventListener("click", buscarEstatisticas
 
 async function buscarEstatisticas() {
     let input = document.getElementById("codigoStats").value.trim();
-    let codigo = input.substring(input.lastIndexOf("/") + 1); 
+    let codigo = input.substring(input.lastIndexOf("/") + 1);
 
     const estatisticasDiv = document.getElementById("estatisticas");
-    estatisticasDiv.innerHTML = ""; 
-    estatisticasDiv.style.display = "none"; 
+    estatisticasDiv.innerHTML = "";
+    estatisticasDiv.style.display = "none";
 
     if (!codigo) {
         alert("Informe o código encurtado.");
@@ -80,7 +73,7 @@ async function buscarEstatisticas() {
     }
 
     try {
-        const response = await fetch(`https://scd-gowv.onrender.com/stats/${codigo}`);
+        const response = await fetch(`http://scd-gowv.onrender.com/stats/${codigo}`);
 
         if (!response.ok) {
             const errorText = await response.text();
@@ -119,7 +112,7 @@ async function buscarEstatisticas() {
 }
 
 function formatarData(isoString) {
+
     const data = new Date(isoString);
     return data.toLocaleString("pt-BR");
 }
-
