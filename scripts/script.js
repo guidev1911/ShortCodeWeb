@@ -67,11 +67,6 @@ async function buscarEstatisticas() {
     estatisticasDiv.innerHTML = "";
     estatisticasDiv.style.display = "none";
 
-    if (!codigo) {
-        alert("Informe o código encurtado.");
-        return;
-    }
-
     try {
         const response = await fetch(`https://scd-gowv.onrender.com/stats/${codigo}`);
 
