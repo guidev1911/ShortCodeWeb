@@ -61,6 +61,12 @@ document.getElementById("btnStats").addEventListener("click", buscarEstatisticas
 
 async function buscarEstatisticas() {
     let input = document.getElementById("codigoStats").value.trim();
+
+        if (!input) {
+        alert("O campo de link encurtado não pode estar vazio.");
+        inputField.focus();
+        return;
+    }
     let codigo = input.substring(input.lastIndexOf("/") + 1);
 
     const estatisticasDiv = document.getElementById("estatisticas");
